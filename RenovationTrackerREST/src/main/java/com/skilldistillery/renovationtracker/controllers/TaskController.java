@@ -38,16 +38,18 @@ public class TaskController {
 	return taskServ.findTaskWithNameLike(keyword);
 	}
 	
-	@PostMapping("tasks")
-	public Task create(HttpServletResponse res, HttpServletRequest req, @RequestBody Task task) {
+	@PostMapping("projects/{projectId}/tasks")
+	public Task create(HttpServletResponse res, HttpServletRequest req, @PathVariable int projectId, @RequestBody Task task) {
 		
-		Task newTask = taskServ.createTask(task); 
+		Task newTask = taskServ.createTask(projectId, task); 
+		
 		if (newTask != null) {
 			res.setStatus(201);
-		}
-		return newTask;
+			return newTask; 
+		} else {
+		return null;
 	}
-	
+	}
 	
 
 
