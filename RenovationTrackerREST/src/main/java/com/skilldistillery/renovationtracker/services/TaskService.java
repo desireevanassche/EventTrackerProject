@@ -8,6 +8,8 @@ public interface TaskService {
 
 	List<Task> allTasks();
 	
+	List<Task> findProjectTasks(int projectId);
+	
 	List<Task> findTaskWithNameLike(String keyword);
 	
 	public Task createTask(int projectId, Task task); 

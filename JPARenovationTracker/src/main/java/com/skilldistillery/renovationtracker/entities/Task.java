@@ -25,6 +25,8 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity 
 public class Task {
 
@@ -54,6 +56,7 @@ public class Task {
 	@CreationTimestamp
 	private LocalDateTime createdAt;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="project_id")
 	private Project project;

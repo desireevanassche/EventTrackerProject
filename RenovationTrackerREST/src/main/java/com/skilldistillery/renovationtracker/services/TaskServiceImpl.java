@@ -24,6 +24,11 @@ public class TaskServiceImpl implements TaskService{
 	public List<Task> allTasks() {
 		return repo.findAll();
 	}
+	
+	@Override
+	public List<Task> findProjectTasks(int projectId) {
+		return repo.findByProject_id(projectId);
+	} 
 
 	@Override
 	public List<Task> findTaskWithNameLike(String keyword) {
@@ -53,7 +58,8 @@ public class TaskServiceImpl implements TaskService{
 	public void deleteTaskById(int taskId) {
 		repo.deleteById(taskId);
 		
-	} 
+	}
+
 	
 	
 }

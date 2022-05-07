@@ -33,6 +33,12 @@ public class TaskController {
 		return taskServ.allTasks(); 
 	}
 	
+	@GetMapping("projects/{projectId}/tasks")
+	public List<Task> findTaskByProjectId(HttpServletResponse res, @PathVariable int projectId) {
+		return taskServ.findProjectTasks(projectId);
+	}
+	
+	
 	@GetMapping("tasks/search/{keyword}")
 	public List<Task> findTaskByKeyWord(@PathVariable String keyword) {
 	return taskServ.findTaskWithNameLike(keyword);
