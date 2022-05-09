@@ -5,7 +5,7 @@ Created by: Desiree VanAssche
 
 ### Database Schema
 
-![Image of MySQL Database Schema](add png here )
+![Image of MySQL Database Schema](https://github.com/desireevanassche/EventTrackerProject/blob/main/db/Untitled.png)
 
 ## Project Routes
 | Return Type       | Route                                 | CRUD Functionality               |
