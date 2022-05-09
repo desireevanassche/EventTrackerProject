@@ -26,7 +26,7 @@ public class ProjectController {
 	private ProjectService projServ;
 
 	@GetMapping("test")
-	public String ping() {
+	public String testing () {
 		return "pong";
 	}
 
