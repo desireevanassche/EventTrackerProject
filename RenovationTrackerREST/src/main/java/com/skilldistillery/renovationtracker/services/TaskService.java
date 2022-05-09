@@ -14,7 +14,9 @@ public interface TaskService {
 	
 	public Task createTask(int projectId, Task task); 
 	
-	public Task updateTask(Task task, int id);
+	public Task updateTask(Task task, int taskId, int projectId);
+	
+//	public Task updateTask(Task task, int taskId);
 	
 	public void deleteTaskById(int taskId); 
 	

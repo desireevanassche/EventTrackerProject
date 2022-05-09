@@ -12,4 +12,9 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
 	List<Task> findByNameLike(@Param("keyword") String keyword); 
 	
 	List<Task> findByProject_id(int projectId);
+	
+	
+	
+	
+
 }
