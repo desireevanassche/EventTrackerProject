@@ -3,7 +3,9 @@ Created by: Desiree VanAssche
 
 ### Overview
 
-### Routes
+### Database Schema
+
+![Image of MySQL Database Schema](add png here )
 
 ## Project Routes
 | Return Type       | Route                                 | CRUD Functionality               |
