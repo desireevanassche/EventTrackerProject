@@ -1,4 +1,4 @@
-# EventTrackerProject
+resolve# EventTrackerProject
 Created by: Desiree VanAssche
 
 ## Project Overview
@@ -47,3 +47,14 @@ This is a three part project, in part one of this project I have created only th
 | `Task`            | `POST projects/{projectId}/tasks/{taskId}` | Create a project task             |
 | `Void`            | `DELETE api/ projects/{id}`                | Delete a project by id            |
 | `Task`            | `PUT projects/{projectId}/tasks/{taskId}`  | Update a project task             |
+
+### Lessons Learned
+
+#### Infinite Recursion
+Infinite recursion can be spotted quite quickly if you know what you are looking for. In this project a Project has a list of Tasks and a list of tasks is assigned to a single project. Sloppily, I forgot to add `@JSONIgnore` to my relationship mappings within the entities and quickly spotted this infinite loop when testing in Postman. The Project listed the Tasks which Listed the Project which listed the task and so on. As my instructors showed us a few examples of this, I was able to quickly resolve this issue by adding the proper annotation to my relationship mappings. In order for Jackson to work well it is important that one of the two sides of a relationship is not serialized, this will allow us to avoid infinite recursion.
+
+### Define your Goals
+I was unclear with my end goal for the Task routes and that lead to me going back over my work and correcting mistakes. Originally, I had created a method to create a task, willy nilly(as my instructors might say). Meaning that I was creating tasks that were not assigned to a Project object, but after realizing that the goal of this application is to assign tasks to a Project, not simply to have a list of tasks I found myself backtracking and deleting code, to make the correction of creating a task, which would be assigned to a list of task, that belongs to a Project. In order to prevent this from happening again I will be more intentional about my goals for an application and their desired outcome, before writing any code.
+
+### Project Id Cannot Be Null
+On my final route I was not receiving the value I was attempting to pass the method from Post man, my end route was right, I had verified that the project and task id both existed in the database but something in my code was not right, and the task I was attempting to update was not changing. A list of task belongs to a Project, and the Project id was not being passed. My update method in the TaskServiceImpl was missing an instance of the project repository, which would allow the application to identify which Project, based upon the passed id and which task, based upon the task id would be updated. 

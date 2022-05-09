@@ -83,6 +83,8 @@ public class TaskServiceImpl implements TaskService {
 			managedTask.setProject(projRepo.findById(projectId).get());
 			managedTask.setId(taskId);
 			managedTask.setName(task.getName());
+			managedTask.setPriorityLevel(task.getPriorityLevel());
+			managedTask.setDescription(task.getDescription());
 
 			return repo.saveAndFlush(managedTask);
 
