@@ -30,7 +30,7 @@ public class TaskController {
 		return "pong";
 	}
 	
-	@GetMapping("tasks") 
+	@GetMapping("") 
 		public List<Task> listTasks() {
 		return taskServ.allTasks(); 
 	}
@@ -68,12 +68,7 @@ public class TaskController {
 	public Task updateTask(@RequestBody Task task, @PathVariable int taskId, @PathVariable int projectId,  HttpServletResponse res) {
 		return taskServ.updateTask(task, taskId, projectId);
 	}
-//	
-//	@PutMapping("projects/{projectId}/tasks/{taskId}")
-//	public Task updateTask(@RequestBody Task task, @PathVariable int taskId, HttpServletResponse res) {
-//		return taskServ.updateTask(task, taskId);
-//	}
-	
+
 	
 	
 
