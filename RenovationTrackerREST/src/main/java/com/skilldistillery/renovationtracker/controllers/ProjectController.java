@@ -36,28 +36,53 @@ public class ProjectController {
 	}
 
 	@GetMapping("projects/search/{keyword}")
-	public List<Project> findPostByKeyword(@PathVariable String keyword) {
-		return projServ.findProjectWithNameLike(keyword);
+	public List<Project> findPostByKeyword(@PathVariable String keyword, HttpServletResponse res) {
+		
+		List<Project> projects = projServ.findProjectWithNameLike(keyword);
+		
+		if (projects == null ) {
+			res.setStatus(404);
+		}
+		return projects; 
 	}
+	
+	
 
 	@DeleteMapping("projects/{id}")
-	void deleteComment(@PathVariable int id) {
+	void deleteComment(@PathVariable int id, HttpServletResponse res) {
 		projServ.deleteProjectById(id);
 	}
+	
 
 	@PostMapping("projects")
 	public Project create(HttpServletResponse res, HttpServletRequest req, @RequestBody Project project) {
 
 		Project newProject = projServ.createProject(project);
-		if (newProject != null) {
-			res.setStatus(201);
+		if (newProject == null) {
+			res.setStatus(404);
+		} else {
+		res.setStatus(201);
+		StringBuffer url = req.getRequestURL();
+		url.append("/").append(project.getId()); 
+		res.setHeader("Location", url.toString()); 
 		}
 		return newProject;
 	}
 	
+	
+	
+	
 	@PutMapping("projects/{id}")
-	public Project updateProject (@RequestBody Project project, @PathVariable int id) {
-		return projServ.updateProject(project, id);
+	public Project updateProject (@RequestBody Project project, @PathVariable int id, HttpServletResponse res, HttpServletRequest req) {
+		Project updated = projServ.updateProject(project, id);
+		if (updated == null) {
+			res.setStatus(404); 
+		} else {
+			res.setStatus(201); 
+			StringBuffer url = req.getRequestURL();
+			url.append("/").append(project.getId()); 
+			res.setHeader("Location", url.toString()); 
+		} return updated; 
 	}
 
 }

@@ -30,7 +30,7 @@ public class TaskController {
 		return "pong";
 	}
 	
-	@GetMapping("") 
+	@GetMapping("tasks") 
 		public List<Task> listTasks() {
 		return taskServ.allTasks(); 
 	}

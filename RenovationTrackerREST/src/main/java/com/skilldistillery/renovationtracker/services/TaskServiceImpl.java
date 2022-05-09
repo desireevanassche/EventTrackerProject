@@ -50,28 +50,7 @@ public class TaskServiceImpl implements TaskService {
 
 	}
 
-//	@Override
-//	public Task updateTask(Task task, int taskId) {
-//		task.setId(taskId);
-//
-//		if (repo.existsById(taskId)) {
-//			return repo.save(task);
-//		}
-//		return null;
-
-//	}
-
-//	if(op.isPresent()) {
-//		
-//		comment.setPost(op.get());
-//		repo.saveAndFlush(comment);
-//		return comment;
-//	}
-//	else {
-//		return null; 
-//	}
-//}
-
+	
 	@Override
 	public Task updateTask(Task task, int taskId, int projectId) {
 

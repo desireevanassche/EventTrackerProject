@@ -21,6 +21,17 @@ This is a three part project, in part one of this project I have created only th
     * Use Spring Data JPA to perform all CRUD operations.
     * Send and receive JSON.
 
+### Technologies Used
+* Spring Tool Suite 4
+* MySQL
+* JUnit
+* Apache Tomcat
+* Atom
+* Potman
+* Gradel
+* Spring Data JPA  
+* REST API
+
 
 
 ### Database Schema
@@ -48,6 +59,45 @@ This is a three part project, in part one of this project I have created only th
 | `Void`            | `DELETE api/ projects/{id}`                | Delete a project by id            |
 | `Task`            | `PUT projects/{projectId}/tasks/{taskId}`  | Update a project task             |
 
+## JSON Create a Project
+`    {
+        "name": "Sring",
+        "description": "String",
+        "budget": double,
+        "imageUrl": "String",
+        "startDate": "2022-12-07T00:00:00",
+        "endDate": "2022-12-09T00:00:00",
+    }`
+
+## JSON Updating a Project
+`{
+    "id": 3,
+    "name": "String - example text",
+    "description": "String - example Complete kitchen overhaul with the intention of repurposing as much material as possible",
+    "imageUrl": "String url"
+}`
+
+## JSON Create a Task
+`    {
+        "name": "String",
+        "description": "String",
+        "priorityLevel": int,
+        "startDate": "2022-07-07T00:00:00",
+        "endDate": null,
+        "project": {
+            "id": 1
+        }
+    }`
+
+## JSON Updating a Task
+`{
+     "name": "String  ",
+     "description": "String",
+     "priorityLevel": int,
+     "startDate": "2022-07-08T00:00:00",
+     "endDate": "2022-07-08T00:00:00"
+ }`
+
 ### Lessons Learned
 
 #### Infinite Recursion
@@ -57,4 +107,4 @@ Infinite recursion can be spotted quite quickly if you know what you are looking
 I was unclear with my end goal for the Task routes and that lead to me going back over my work and correcting mistakes. Originally, I had created a method to create a task, willy nilly(as my instructors might say). Meaning that I was creating tasks that were not assigned to a Project object, but after realizing that the goal of this application is to assign tasks to a Project, not simply to have a list of tasks I found myself backtracking and deleting code, to make the correction of creating a task, which would be assigned to a list of task, that belongs to a Project. In order to prevent this from happening again I will be more intentional about my goals for an application and their desired outcome, before writing any code.
 
 ### Project Id Cannot Be Null
-On my final route I was not receiving the value I was attempting to pass the method from Post man, my end route was right, I had verified that the project and task id both existed in the database but something in my code was not right, and the task I was attempting to update was not changing. A list of task belongs to a Project, and the Project id was not being passed. My update method in the TaskServiceImpl was missing an instance of the project repository, which would allow the application to identify which Project, based upon the passed id and which task, based upon the task id would be updated. 
+On my final route I was not receiving the value I was attempting to pass the method from Post man, my end route was right, I had verified that the project and task id both existed in the database but something in my code was not right, and the task I was attempting to update was not changing. A list of task belongs to a Project, and the Project id was not being passed. My update method in the TaskServiceImpl was missing an instance of the project repository, which would allow the application to identify which Project, based upon the passed id and which task, based upon the task id would be updated.
