@@ -3,14 +3,17 @@ package com.skilldistillery.renovationtracker.services;
 import java.util.List;
 
 import com.skilldistillery.renovationtracker.entities.Project;
+import com.skilldistillery.renovationtracker.entities.Task;
 
 public interface ProjectService {
 
-	List<Project> allProjects(); 
+	public List<Project> allProjects(); 
 	
-	List<Project> findProjectWithNameLike(String keyword);
+	public Project findById(int id); 
 	
-	List<Project> findProjectByBudgetRange(double min, double max);
+	public List<Project> findProjectWithNameLike(String keyword);
+	
+	public List<Project> findProjectByBudgetRange(double min, double max);
 	
 	public void deleteProjectById(int projectId);
 	
@@ -18,4 +21,5 @@ public interface ProjectService {
 	
 	public Project updateProject(Project project, int id); 
 	
+	public List<Task> findTasksByProjectId(int projectId);
 }

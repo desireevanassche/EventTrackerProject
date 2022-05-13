@@ -1,18 +1,24 @@
 package com.skilldistillery.renovationtracker.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.renovationtracker.entities.Project;
+import com.skilldistillery.renovationtracker.entities.Task;
 import com.skilldistillery.renovationtracker.repositories.ProjectRepository;
+import com.skilldistillery.renovationtracker.repositories.TaskRepository;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
 	@Autowired
 	private ProjectRepository repo;
+	
+	@Autowired
+	private TaskRepository taskRepo;
 
 	@Override
 	public List<Project> allProjects() {
@@ -52,26 +58,21 @@ public class ProjectServiceImpl implements ProjectService {
 
 	}
 
+	@Override
+	public Project findById(int id) {
+		Optional<Project> op = repo.findById(id);
+		Project p = null;
+
+		if (op.isPresent()) {
+			p = op.get();
+		}
+		return p;
+
+	}
+
+	@Override
+	public List<Task> findTasksByProjectId(int projectId) {
+		return taskRepo.findByProject_id(projectId);
+	}
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -15,6 +15,7 @@ package com.skilldistillery.renovationtracker.entities;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -57,7 +58,7 @@ public class Task {
 	private LocalDateTime createdAt;
 	
 	@JsonIgnore
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="project_id")
 	private Project project;
 
@@ -67,6 +68,24 @@ public class Task {
 	public Task() {
 		super();
 	}
+	
+	
+
+
+	public Task(int id, String name, String description, int priorityLevel, LocalDateTime startDate,
+			LocalDateTime endDate, LocalDateTime createdAt, Project project) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.priorityLevel = priorityLevel;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.createdAt = createdAt;
+		this.project = project;
+	}
+
+
 
 
 	public int getId() {
@@ -151,11 +170,19 @@ public class Task {
 	}
 
 
+
+
 	@Override
 	public String toString() {
-		return "Task [id=" + id + ", name=" + name + ", description=" + description + ", priorityLevel=" + priorityLevel
-				+ ", startDate=" + startDate + ", endDate=" + endDate + ", createdAt=" + createdAt + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Task [id=").append(id).append(", name=").append(name).append(", description=")
+				.append(description).append(", priorityLevel=").append(priorityLevel).append(", startDate=")
+				.append(startDate).append(", endDate=").append(endDate).append(", createdAt=").append(createdAt)
+				.append(", project=").append(project).append("]");
+		return builder.toString();
 	}
+
+
 
 
 

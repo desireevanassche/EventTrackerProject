@@ -4,12 +4,47 @@
 
 <Title>Renovation Site</Title>
 
+<script type="text/javascript" src="js/script.js"></script>
+
 </head>
 
 
 <body>
 
-<h1>Stuff & things </h1>
+<h1>TRACK THINGZ  </h1>
+
+  <form name="projectForm">
+    <input type="number" name="projectId">
+    <button name="lookup">Project by Id</button>
+  </form>
+  
+  <form name="allProjectForm">
+    <button name="findAll">Find All Projects</button>
+  </form>
+  
+  <div id="output">
+    <div id="projectData"></div>
+    <div id="taskData"></div>
+   
+  </div>
+
+    <div id="findAllData"> </div>
+    
+   
+    
+     <form name="createProjectForm">
+    Name: <input type="text" name="name"><br>
+    Description: <input type="text" name="description"><br>
+    Budget: <input type="number" name="budget"><br>
+    Image Url : <input type="text" name="imageUrl"><br>
+    Start Date: <input type="number" name="startDate"><br>
+    End Date: <input type="number" name="endDate"><br>
+    <button name="submit">Create</button>
+  </form>
+
+
+
+
 </body>
 
 

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.renovationtracker.entities.Project;
+import com.skilldistillery.renovationtracker.entities.Task;
 import com.skilldistillery.renovationtracker.services.ProjectService;
 
 @RestController
@@ -34,9 +35,25 @@ public class ProjectController {
 	public List<Project> listProjects() {
 		return projServ.allProjects();
 	}
+	
+	@GetMapping("projects/{id}")
+	public Project findById(HttpServletResponse res, @PathVariable int id) {
+		Project project = projServ.findById(id);
+		if (project == null) {
+			res.setStatus(404);
+
+		}
+		return project;
+	}
+	
+	@GetMapping("project/{projectId}/tasks")
+	public List<Task> findTasks(HttpServletResponse res, @PathVariable int projectId ) {
+		return projServ.findTasksByProjectId(projectId);
+	}
+	
 
 	@GetMapping("projects/search/{keyword}")
-	public List<Project> findPostByKeyword(@PathVariable String keyword, HttpServletResponse res) {
+	public List<Project> findProjectsByKeyword(@PathVariable String keyword, HttpServletResponse res) {
 		
 		List<Project> projects = projServ.findProjectWithNameLike(keyword);
 		

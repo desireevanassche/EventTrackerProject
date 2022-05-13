@@ -70,6 +70,24 @@ public class Project {
 		super();
 	}
 
+	
+	
+	public Project(int id, String name, String description, double budget, String imageUrl, LocalDateTime startDate,
+			LocalDateTime endDate, LocalDateTime createdAt, List<Task> tasks) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.budget = budget;
+		this.imageUrl = imageUrl;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.createdAt = createdAt;
+		this.tasks = tasks;
+	}
+
+
+
 	public int getId() {
 		return id;
 	}
@@ -165,12 +183,22 @@ public class Project {
 		return id == other.id;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Project [id=" + id + ", name=" + name + ", description=" + description + ", budget=" + budget
-				+ ", imageUrl=" + imageUrl + ", startDate=" + startDate + ", endDate=" + endDate + ", createdAt="
-				+ createdAt + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Project id ").append(id).append("name=").append(name).append(", description=")
+				.append(description).append(", budget=").append(budget).append(", imageUrl=").append(imageUrl)
+				.append(", startDate=").append(startDate).append(", endDate=").append(endDate).append(", createdAt=")
+				.append(createdAt).append(", tasks=").append(tasks).append("]");
+		return builder.toString();
 	}
+
+
+
+
+	
 
 
 
