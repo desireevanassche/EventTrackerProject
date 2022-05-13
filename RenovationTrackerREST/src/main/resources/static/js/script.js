@@ -19,9 +19,12 @@ function init() {
 		getAllProjects();
 	});
 
-document.createProjectForm.submit.addEventListener('click', createProject);
+	document.createProjectForm.submit.addEventListener('click', createProject);
+
+
 
 }
+
 
 
 
@@ -65,6 +68,46 @@ function createProject(e) {
 }
 
 //--- END Start Projects -------------------------------------------------------
+
+//START EDIT PROJECT ------------------------------------------------------------
+
+function createProject(e) {
+	e.preventDefault();
+
+	let xhr = new XMLHttpRequest();
+	xhr.open('POST', 'api/projects', true);
+
+	xhr.setRequestHeader("Content-type", "application/json"); // Specify JSON request body
+
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4) {
+			if (xhr.status == 200 || xhr.status == 201) { // Ok or Created
+				let data = JSON.parse(xhr.responseText);
+				displayProject(data);
+			}
+			else {
+				console.error("POST request failed.");
+				console.error(xhr.status + ': ' + xhr.responseText);
+			}
+		}
+	};
+
+
+	let project = {
+		name: document.createProjectForm.name.value,
+		description: document.createProjectForm.description.value,
+		budget: document.createProjectForm.budget.value,
+		imageUrl: document.createProjectForm.imageUrl.value,
+		startDate: document.createProjectForm.startDate.value,
+		endDate: document.createProjectForm.endDate.value
+	};
+	xhr.send(JSON.stringify(project));
+}
+
+
+
+
+
 
 // START Find project by id & display ----------------------------------------- 
 
@@ -136,17 +179,21 @@ function displayAllProjects(projects) {
 	let thead = document.createElement('thead');
 	
 	
+	
 	for(p in projects[0]) {
 		let th = document.createElement('th');
 		th.textContent = p; 
 		thead.appendChild(th); 
 		}
+		
+		
 		table.appendChild(thead); 
 	
-	
-		let tBody = document.createElement('tbody'); 
-	
 
+		
+		let tBody = document.createElement('tbody'); 
+
+	
 	
 	projects.forEach(function(val) {
 		let tr = document.createElement('tr');
@@ -160,6 +207,7 @@ function displayAllProjects(projects) {
 		let budget = document.createElement('td'); 
 		
 		let imageUrl = document.createElement('td'); 
+		
 		let startDate = document.createElement('td'); 
 		let endDate = document.createElement('td'); 
 		let createdAt = document.createElement('td'); 
@@ -185,11 +233,25 @@ function displayAllProjects(projects) {
 		tr.appendChild(endDate); 
 		tr.appendChild(createdAt); 
 		
+		
+		let editButton = document.createElement('button');
+		editButton.textContent = 'Edit'; 
+		tr.appendChild(editButton);
+		
+		
 		tBody.append(tr); 
+		
+		
 	});
 	
 	table.appendChild(tBody); 
 	div.appendChild(table); 
+	
+	let br = document.createElement('br');
+	table.appendChild(br); 
+	
+	document.getElementById('button').Edit.addEventListener('click', updateProject);
+	
 	
 
 	}
