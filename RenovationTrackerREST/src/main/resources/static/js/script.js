@@ -142,13 +142,13 @@ function displayProject(project) {
 	dataDiv.appendChild(updateForm);
 	var updateBtn = document.createElement('button');
 	dataDiv.appendChild(updateBtn);
-	updateBtn.name = "edit";
-	updateBtn.textContent = "edit";
+	updateBtn.name = "update";
+	updateBtn.textContent = "update";
 	updateBtn.addEventListener('click', function(e) {
 		e.preventDefault();
 		projectUpdateForm(project);
 
-
+	//add a metod call / event listener to delete the project here 
 	
 	});
 	
@@ -231,7 +231,7 @@ function updateProject(project) {
 
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState === 4) {
-					if (xhr.status == 200) {
+					if (xhr.status == 200 || xhr.status == 201) {
 						let updatedProject = JSON.parse(xhr.responseText);
 						displayProject(updatedProject);
 					}
@@ -349,23 +349,15 @@ function displayAllProjects(projects) {
 				tr.appendChild(createdAt);
 
 
-				/*let updateButton = document.createElement('button');
-				updateButton.textContent = 'Update'; 
-				updateButton.id = 'updateButton';
-				tr.appendChild(editButton);  /// start different attemt 
-			let updateTd = document.createElement('td');
-					let updateForm = document.createElement('form');
-					updateForm.id = 'updateForm';
-					let button = document.createElement('button');
-					button.type = 'submit';
-					button.name = 'update';
-					button.innerHTML = 'Update';
-					button.value = val.id;
-		
-		
-					updateForm.appendChild(button);
-					updateTd.appendChild(updateForm);
-					tr.appendChild(updateTd); */
+		/* let updateForm = document.createElement('form');
+		dataDiv.appendChild(updateForm);
+		var updateBtn = document.createElement('button');
+		dataDiv.appendChild(updateBtn);
+		updateBtn.name = "edit";
+		updateBtn.textContent = "edit";
+		updateBtn.addEventListener('click', function(e) {
+		e.preventDefault();
+		projectUpdateForm(project); */ 
 
 
 
