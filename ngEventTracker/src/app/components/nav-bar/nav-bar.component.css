@@ -1,0 +1,37 @@
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #272829;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: pink;
+  text-decoration: none;
+}
+
+.navbar {
+  background-color: white !important;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  color: black;
+
+
+   }
+
+  .nav-item {
+    margin-left: 0px;
+    padding-right: 50px !important;
+    padding-top: 10px;
+    font-family: 'Source Sans Pro', sans-serif;
+    justify-content: center;
+  }
+  .navbar-scroll .nav-link, .navbar-scroll .fa-bars, .navbar-scroll .navar-brand
+    {
+    color: pink;
+  }
+
+

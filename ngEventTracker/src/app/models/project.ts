@@ -8,7 +8,7 @@ export class Project {
   endDate: string;
   completed: boolean;
 
-  constructor(id: number = 0,  name: string = "", description: string = "", budget: number = 0, imageUrl : string ="", startDate: string ="", endDate: string ="0", completed: boolean = false ) {
+  constructor(id: number = 0,  name: string = "", description: string = "", budget: number = 0, imageUrl : string ="", startDate: string ="", endDate: string ="", completed: boolean = false ) {
 
     this.id = id;
     this.name = name;

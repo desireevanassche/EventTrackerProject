@@ -53,9 +53,24 @@ export class ProjectsComponent implements OnInit {
     );
   }
 
-  setEditProject() {
-    this.editProject = Object.assign({}, this.selected);
-  }
+//   addProject(formProject: NgForm) {
+//     this.newProject = new Project();
+//     this.newProject.name = formProject.value.name;
+//     this.newProject.description = formProject.value.description;
+//     this.newProject.budget = formProject.value.budget;
+//     this.newProject.startDate = formProject.value.startDate;
+//     this.newProject.endDate = formProject.value.endDate;
+//     this.projSvc.create(this.newProject).subscribe(
+//     () => {
+//       this.reload();
+//     },
+//     err => {
+//       console.error('todoListComponent - addTodo()');
+//       console.error(err);
+//     }
+//   );
+//   formProject.reset();
+// }
 
   updateProject(project: Project){
     this.projSvc.update(project).subscribe(

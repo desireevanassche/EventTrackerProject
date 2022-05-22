@@ -1,18 +1,11 @@
-<!-- Create somthing that shows how any porjects wihtout warning <h1>{{title}} <span [ngClass]="checkWarning()">{{getNumOfProjects()}}</span></h1> -->
-
-<div *ngFor="let project of projects">
-  <h3>{{project.name}}</h3>
-  <p>Description ${{project.description}}</p>
-  <p>budget {{project.budget}}</p>
-  <img [src] ="project.imageUrl"/>
-  <hr/>
-</div>
-
+<h1>You Have {{getNumOfProjects()}} Active Projects </h1>
+<h5>Show Completed Projects? <input type="checkbox" name="showComplete"  [(ngModel)]="showComplete"/></h5>
 
 <table *ngIf="!selected" class="table table-striped table-hover">
   <thead class="table-dark">
     <tr>
       <th>Project</th>
+      <th>Budget</th>
       <th></th>
       <th>Completed</th>
       <th>Delete</th>
@@ -21,22 +14,13 @@
   <tbody>
     <tr [ngClass]="project.completed === true ? 'completed' : ''" *ngFor="let project of projects | incomplete:showComplete ">
       <td class='name' (click)="displayProject(project)">{{project.name}}</td>
+      <td class='name' (click)="displayProject(project)">${{project.budget}}</td>
       <td><input type="checkbox" name="completed" (change)="updateProject(project)" [(ngModel)]="project.completed" /></td>
       <td>{{project.completed}}</td>
       <td><button class="btn btn-danger"(click)="deleteProject(project.id)">X</button></td>
     </tr>
   </tbody>
 </table>
-Show Completed Projects? <input type="checkbox" name="showComplete"  [(ngModel)]="showComplete"/>
-
-<form *ngIf="!selected">
- name  <input type="text" name="name" [(ngModel)]="newProject.name">
-  des <input type="text" name="description" [(ngModel)]="newProject.description">
- budget <input type="text" name="budget" [(ngModel)]="newProject.budget">
-  <input type="text" name="imageUrl" [(ngModel)]="newProject.imageUrl">
-  <input class="btn btn-success" name="submit" (click)="addProject(newProject)">
-</form>
-
 
 <div *ngIf="selected && !editProject">
   <p>{{selected.id}}</p>
@@ -47,7 +31,7 @@ Show Completed Projects? <input type="checkbox" name="showComplete"  [(ngModel)]
   <p>{{selected.startDate}}</p>
   <p>{{selected.endDate}}</p>
   <p>{{selected.completed}}</p>
-  <button (click)="setEditProject()">Edit</button>
+  <button (click)="editProject = selected">Edit</button>
   <button (click)="displayTable()">Back</button>
 </div>
 
@@ -57,9 +41,25 @@ Show Completed Projects? <input type="checkbox" name="showComplete"  [(ngModel)]
     Description: <input type="text" name="description" [(ngModel)]="editProject.description">
     Budget: <input type="text" name="budget" [(ngModel)]="editProject.budget">
     imageUrl: <input type="text" name="imageUrl" [(ngModel)]="editProject.imageUrl">
-    Start Date: <input type="checkbox" name="startDate" [(ngModel)]="editProject.startDate">
-    End Date: <input type="checkbox" name="endDate" [(ngModel)]="editProject.endDate">
+    Start Date: <input type="datetime-local" name="startDate" [(ngModel)]="editProject.startDate">
+    End Date: <input type="datetime-local" name="endDate" [(ngModel)]="editProject.endDate">
     <button (click)="updateProject(editProject)">Save</button>
     <button (click)="editProject = null">Cancel</button>
   </form>
 </div>
+
+<div>
+  <form *ngIf="!selected">
+    Name: <input type="text" name="name" [(ngModel)]="newProject.name"><br>
+    Description: <input type="text" name="description" [(ngModel)]="newProject.description"><br>
+    Budget: <input type="text" name="budget" [(ngModel)]="newProject.budget"><br>
+    imageUrl: <input type="text" name="imageUrl" [(ngModel)]="newProject.imageUrl"><br>
+    Start Date: <input type="datetime-local" name="startDate" [(ngModel)]="newProject.startDate"><br>
+    End Date: <input type="datetime-local" name="endDate" [(ngModel)]="newProject.endDate"><br>
+    <button (click)="addProject(newProject)">Save</button>
+    <button (click)="editProject = null">Cancel</button>
+  </form>
+</div>
+
+
+
