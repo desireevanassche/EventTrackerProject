@@ -16,3 +16,14 @@ a:hover {
 h1, h2, h3, h4, h5, h6 {
 font-family: 'Yeseva One';
 }
+
+table {
+  width: 800px;
+  height: auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+h1, h5 {
+  padding-left: 200px;
+}

@@ -9,6 +9,12 @@ This application allows contractors and DIY'ers to plan, organize, and track hom
 ### Development Overview Phase 1
 This is a three part project, in part one of this project I have created only the back end. Testing the functionality of the back end with Junit test, and the REST endpoints in the tables below. This phase of the project is focused on CRUD operations. In order to validate the schema I turned to the single source of truth when writing my tests as well as end point routes, the database. While running these operations I kept a terminal window open that was logged onto the database as well as the Postman application. To verify that the Project and Task controllers were working properly I would validate the response from the post man route by check it again the database. Had the database performed the crud operation as is should and the Postman show the correct result, then I would move onto the next route. This phase was incredibly fun and boosted my back end confidence quite a bit.
 
+### Phase 2 Javascript
+Javascript is utilized to perform CRUD operations using event listeners. An event listener allow the user to Create, Edit, Read, or Delete a Project by manipulation of the DOM. Event listeners are able to aid in the performance of crud operations by attaching an event handler to a specified element.
+
+### Phase 3 Angular
+Upon loading this application the user enters the home page. This page is currently blank, but leaves room for me to come back later to design. The navbar has a few options but for now the user should click on the "Projects" section, this will allow the user to perform crud operations, or allow them to Create, Read, Update, or Delete a project.
+
 
 ### Learning Objectives
 
@@ -31,6 +37,13 @@ This is a three part project, in part one of this project I have created only th
 * Gradel
 * Spring Data JPA  
 * REST API
+* Send & Recieve JSON
+* Angular
+* Components
+* Directives
+* Services
+* Asynchronous Requests
+* DOM Manipulation
 
 
 

@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { IncompletePipe } from './pipes/incomplete.pipe';
+import { AccodionComponent } from './components/accodion/accodion.component';
 
 
 
@@ -25,7 +26,8 @@ import { IncompletePipe } from './pipes/incomplete.pipe';
     AboutComponent,
     HomeComponent,
     ProjectsComponent,
-    IncompletePipe
+    IncompletePipe,
+    AccodionComponent
 
   ],
   imports: [

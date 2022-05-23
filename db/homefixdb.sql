@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `project` (
   `created_date` DATETIME NULL,
   `img_url` VARCHAR(2000) NULL,
   `budget` VARCHAR(45) NULL,
+  `completed` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -72,8 +73,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `homefixdb`;
-INSERT INTO `project` (`id`, `name`, `start_date`, `end_date`, `description`, `created_date`, `img_url`, `budget`) VALUES (1, 'Kitchen Remodel', '2022-12-07', '2022-12-09', 'Complete kitchen overhaul with the intention of repurposing as much material as possible', '2022-05-04', '', '6000');
-INSERT INTO `project` (`id`, `name`, `start_date`, `end_date`, `description`, `created_date`, `img_url`, `budget`) VALUES (2, 'Basement Apartment', '2022-06-12', '2023-05-05', 'Converting our 70\'s style basement into an apartment for my parents. ', '2022-02-01', '', '8000');
+INSERT INTO `project` (`id`, `name`, `start_date`, `end_date`, `description`, `created_date`, `img_url`, `budget`, `completed`) VALUES (1, 'Kitchen Remodel', '2022-12-07', '2022-12-09', 'Complete kitchen overhaul with the intention of repurposing as much material as possible', '2022-05-04', '', '6000', DEFAULT);
+INSERT INTO `project` (`id`, `name`, `start_date`, `end_date`, `description`, `created_date`, `img_url`, `budget`, `completed`) VALUES (2, 'Basement Apartment', '2022-06-12', '2023-05-05', 'Converting our 70\'s style basement into an apartment for my parents. ', '2022-02-01', '', '8000', DEFAULT);
 
 COMMIT;
 

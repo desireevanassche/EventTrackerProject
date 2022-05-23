@@ -15,8 +15,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
-
 /* 
 | Field        | Type          | Null | Key | Default | Extra |
 +--------------+---------------+------+-----+---------+-------+
@@ -37,56 +35,47 @@ public class Project {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	private String name; 
-	
-	private String description; 
-	
-	private double budget; 
-	
-	@Column(name="img_url")
+
+	private String name;
+
+	private String description;
+
+	private double budget;
+
+	private boolean completed;
+
+	@Column(name = "img_url")
 	private String imageUrl;
-	
-	@Column(name="start_date")
+
+	@Column(name = "start_date")
 	@CreationTimestamp
 	private LocalDateTime startDate;
-	
-	@Column(name="end_date")
+
+	@Column(name = "end_date")
 	@CreationTimestamp
 	private LocalDateTime endDate;
-	
-	@Column(name="created_date")
+
+	@Column(name = "created_date")
 	@CreationTimestamp
 	private LocalDateTime createdAt;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy="project")
-	private List<Task> tasks; 
 
-	
+	@JsonIgnore
+	@OneToMany(mappedBy = "project")
+	private List<Task> tasks;
+
 	// --- END FIELDS -----------------------------------------------------
-	
+
 	public Project() {
 		super();
 	}
 
-	
-	
-	public Project(int id, String name, String description, double budget, String imageUrl, LocalDateTime startDate,
-			LocalDateTime endDate, LocalDateTime createdAt, List<Task> tasks) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.budget = budget;
-		this.imageUrl = imageUrl;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.createdAt = createdAt;
-		this.tasks = tasks;
+	public boolean isCompleted() {
+		return completed;
 	}
 
-
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
+	}
 
 	public int getId() {
 		return id;
@@ -103,8 +92,6 @@ public class Project {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	
 
 	public String getDescription() {
 		return description;
@@ -145,8 +132,6 @@ public class Project {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
-	
-	
 
 	public double getBudget() {
 		return budget;
@@ -155,8 +140,6 @@ public class Project {
 	public void setBudget(double budget) {
 		this.budget = budget;
 	}
-	
-	
 
 	public List<Task> getTasks() {
 		return tasks;
@@ -183,27 +166,16 @@ public class Project {
 		return id == other.id;
 	}
 
-
-
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Project id ").append(id).append("name=").append(name).append(", description=")
-				.append(description).append(", budget=").append(budget).append(", imageUrl=").append(imageUrl)
-				.append(", startDate=").append(startDate).append(", endDate=").append(endDate).append(", createdAt=")
-				.append(createdAt).append(", tasks=").append(tasks).append("]");
+		builder.append("Project [id=").append(id).append(", name=").append(name).append(", description=")
+				.append(description).append(", budget=").append(budget).append(", completed=").append(completed)
+				.append(", imageUrl=").append(imageUrl).append(", startDate=").append(startDate).append(", endDate=")
+				.append(endDate).append(", createdAt=").append(createdAt).append(", tasks=").append(tasks).append("]");
 		return builder.toString();
 	}
 
 
 
-
-	
-
-
-
-	
-	
-	
-	 
 }

@@ -1,37 +1,31 @@
-body {
-  font-family: 'Source Sans Pro', sans-serif;
-  color: #272829;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+body{
+  background-color: #FFFFFF;
+
 }
 
-a {
-  color: black;
+nav{
+  width:  100%;
+  background-color: #EFEBEC;
+  align-items: center;
+ }
+
+a{
   text-decoration: none;
+  color: rgba(0,0,0,0.8);
+
 }
 
-a:hover {
-  color: pink;
-  text-decoration: none;
+ li {
+  background-color: #FFFFFF;
+  padding-top: 90px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight:  200;
+  padding-left: 50px;
+  padding-right: 50px;
+
 }
 
-.navbar {
-  background-color: white !important;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 16px;
-  color: black;
-
-
-   }
-
-  .nav-item {
-    margin-left: 0px;
-    padding-right: 50px !important;
-    padding-top: 10px;
-    font-family: 'Source Sans Pro', sans-serif;
-    justify-content: center;
-  }
-  .navbar-scroll .nav-link, .navbar-scroll .fa-bars, .navbar-scroll .navar-brand
-    {
-    color: pink;
-  }
 
 
